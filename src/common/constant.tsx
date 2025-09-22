@@ -41,7 +41,7 @@ export const MENU_ITEMS: MenuItem[] = [
     key: 'realTime',
     text: '实时监控',
     icon: <Tab />,
-    children: [{ key: 'realTime-1', text: '监控列表', icon: <Tab />, path: '/realTime/page1' }],
+    children: [{ key: 'realTime-1', text: '数字孪生', icon: <Tab />, path: '/realTime/page1' }],
   },
   {
     key: 'trainSupport',
