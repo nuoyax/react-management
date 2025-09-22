@@ -28,5 +28,5 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: build-artifact
-        path: build/
+        path: dist/        # <-- 修改这里
         retention-days: 7
