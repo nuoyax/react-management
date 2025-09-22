@@ -6,7 +6,7 @@ import DescriptionIcon from '@mui/icons-material/Description';
 import HomeIcon from '@mui/icons-material/Home';
 import ListIcon from '@mui/icons-material/List';
 
-import { Construction, Group, Settings, Token, Tab } from '@mui/icons-material';
+import { Construction, Group, Settings, Token, Tab,Visibility } from '@mui/icons-material';
 import PeopleIcon from '@mui/icons-material/People';
 import TextFormatIcon from '@mui/icons-material/TextFormat';
 
@@ -30,7 +30,12 @@ export const MENU_ITEMS: MenuItem[] = [
   //   icon: <TextFormatIcon />,
   //   path: '/form',
   // },
-
+  {
+    key: 'visionMixin',
+    text: '视觉融合',
+    icon: <Visibility />,
+    children: [{ key: 'visionMixin-1', text: '视觉融合', icon: <Visibility />, path: '/visionMixin/page1' }],
+  },
   {
     key: 'dataAnalysis',
     text: '数据分析',

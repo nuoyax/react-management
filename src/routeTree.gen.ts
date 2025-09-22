@@ -20,6 +20,7 @@ import { Route as AuthenticatedSystemConfigIndexRouteImport } from './routes/_au
 import { Route as AuthenticatedPokemonIndexRouteImport } from './routes/_authenticated/pokemon/index';
 import { Route as AuthenticatedFormIndexRouteImport } from './routes/_authenticated/form/index';
 import { Route as AuthenticatedPokemonIdRouteImport } from './routes/_authenticated/pokemon/$id';
+import { Route as AuthenticatedVisionMixinPage1IndexRouteImport } from './routes/_authenticated/visionMixin/page1/index';
 import { Route as AuthenticatedSenseManagementPage1IndexRouteImport } from './routes/_authenticated/senseManagement/page1/index';
 import { Route as AuthenticatedDataAnalysisPage1IndexRouteImport } from './routes/_authenticated/dataAnalysis/page1/index';
 
@@ -82,6 +83,12 @@ const AuthenticatedPokemonIdRoute = AuthenticatedPokemonIdRouteImport.update({
   path: '/pokemon/$id',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any);
+const AuthenticatedVisionMixinPage1IndexRoute =
+  AuthenticatedVisionMixinPage1IndexRouteImport.update({
+    id: '/visionMixin/page1/',
+    path: '/visionMixin/page1/',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any);
 const AuthenticatedSenseManagementPage1IndexRoute =
   AuthenticatedSenseManagementPage1IndexRouteImport.update({
     id: '/senseManagement/page1/',
@@ -108,6 +115,7 @@ export interface FileRoutesByFullPath {
   '/userAdmin': typeof AuthenticatedUserAdminIndexRoute;
   '/dataAnalysis/page1': typeof AuthenticatedDataAnalysisPage1IndexRoute;
   '/senseManagement/page1': typeof AuthenticatedSenseManagementPage1IndexRoute;
+  '/visionMixin/page1': typeof AuthenticatedVisionMixinPage1IndexRoute;
 }
 export interface FileRoutesByTo {
   '/login': typeof authLoginRoute;
@@ -122,6 +130,7 @@ export interface FileRoutesByTo {
   '/userAdmin': typeof AuthenticatedUserAdminIndexRoute;
   '/dataAnalysis/page1': typeof AuthenticatedDataAnalysisPage1IndexRoute;
   '/senseManagement/page1': typeof AuthenticatedSenseManagementPage1IndexRoute;
+  '/visionMixin/page1': typeof AuthenticatedVisionMixinPage1IndexRoute;
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport;
@@ -138,6 +147,7 @@ export interface FileRoutesById {
   '/_authenticated/userAdmin/': typeof AuthenticatedUserAdminIndexRoute;
   '/_authenticated/dataAnalysis/page1/': typeof AuthenticatedDataAnalysisPage1IndexRoute;
   '/_authenticated/senseManagement/page1/': typeof AuthenticatedSenseManagementPage1IndexRoute;
+  '/_authenticated/visionMixin/page1/': typeof AuthenticatedVisionMixinPage1IndexRoute;
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath;
@@ -153,7 +163,8 @@ export interface FileRouteTypes {
     | '/top-progress-bar'
     | '/userAdmin'
     | '/dataAnalysis/page1'
-    | '/senseManagement/page1';
+    | '/senseManagement/page1'
+    | '/visionMixin/page1';
   fileRoutesByTo: FileRoutesByTo;
   to:
     | '/login'
@@ -167,7 +178,8 @@ export interface FileRouteTypes {
     | '/top-progress-bar'
     | '/userAdmin'
     | '/dataAnalysis/page1'
-    | '/senseManagement/page1';
+    | '/senseManagement/page1'
+    | '/visionMixin/page1';
   id:
     | '__root__'
     | '/_authenticated'
@@ -182,7 +194,8 @@ export interface FileRouteTypes {
     | '/_authenticated/top-progress-bar/'
     | '/_authenticated/userAdmin/'
     | '/_authenticated/dataAnalysis/page1/'
-    | '/_authenticated/senseManagement/page1/';
+    | '/_authenticated/senseManagement/page1/'
+    | '/_authenticated/visionMixin/page1/';
   fileRoutesById: FileRoutesById;
 }
 export interface RootRouteChildren {
@@ -270,6 +283,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedPokemonIdRouteImport;
       parentRoute: typeof AuthenticatedRouteRoute;
     };
+    '/_authenticated/visionMixin/page1/': {
+      id: '/_authenticated/visionMixin/page1/';
+      path: '/visionMixin/page1';
+      fullPath: '/visionMixin/page1';
+      preLoaderRoute: typeof AuthenticatedVisionMixinPage1IndexRouteImport;
+      parentRoute: typeof AuthenticatedRouteRoute;
+    };
     '/_authenticated/senseManagement/page1/': {
       id: '/_authenticated/senseManagement/page1/';
       path: '/senseManagement/page1';
@@ -298,6 +318,7 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedUserAdminIndexRoute: typeof AuthenticatedUserAdminIndexRoute;
   AuthenticatedDataAnalysisPage1IndexRoute: typeof AuthenticatedDataAnalysisPage1IndexRoute;
   AuthenticatedSenseManagementPage1IndexRoute: typeof AuthenticatedSenseManagementPage1IndexRoute;
+  AuthenticatedVisionMixinPage1IndexRoute: typeof AuthenticatedVisionMixinPage1IndexRoute;
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
@@ -313,6 +334,8 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
     AuthenticatedDataAnalysisPage1IndexRoute,
   AuthenticatedSenseManagementPage1IndexRoute:
     AuthenticatedSenseManagementPage1IndexRoute,
+  AuthenticatedVisionMixinPage1IndexRoute:
+    AuthenticatedVisionMixinPage1IndexRoute,
 };
 
 const AuthenticatedRouteRouteWithChildren =
