@@ -34,20 +34,20 @@ export const MENU_ITEMS: MenuItem[] = [
     key: 'dataAnalysis',
     text: '数据分析',
     icon: <Token />,
-    children: [{ key: 'dataAnalysis-1', text: '数据分析', icon: <Token />, path: '/dataAnalysis/page1' }],
+    children: [{ key: 'dataAnalysis-1', text: '数据列表', icon: <Token />, path: '/dataAnalysis/page1' }],
     
   },
   {
     key: 'realTime',
     text: '实时监控',
     icon: <Tab />,
-    children: [{ key: 'realTime-1', text: '实时监控', icon: <Tab />, path: '/realTime/page1' }],
+    children: [{ key: 'realTime-1', text: '监控列表', icon: <Tab />, path: '/realTime/page1' }],
   },
   {
     key: 'trainSupport',
     text: '培训支持',
     icon: <Tab />,
-    children: [{ key: 'trainSupport-1', text: '培训支持', icon: <Tab />, path: '/trainSupport/page1' }],
+    children: [{ key: 'trainSupport-1', text: '培训列表', icon: <Tab />, path: '/trainSupport/page1' }],
   },
   // { key: 'pokemon', text: '宝可梦', icon: <CatchingPokemonIcon />, path: '/pokemon' },
   // { key: 'top-progress-bar', text: 'TopProgressBar', icon: <CatchingPokemonIcon />, path: '/top-progress-bar' },
@@ -55,7 +55,7 @@ export const MENU_ITEMS: MenuItem[] = [
     key: 'senseManagement',
     text: '场景管理',
     icon: <Tab />,
-    children: [{ key: 'senseManagement-1', text: '场景管理', icon: <Tab />, path: '/senseManagement/page1' }],
+    children: [{ key: 'senseManagement-1', text: '场景列表', icon: <Tab />, path: '/senseManagement/page1' }],
   },
   // {
   //   key: 'management',
