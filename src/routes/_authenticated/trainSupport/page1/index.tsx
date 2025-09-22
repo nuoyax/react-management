@@ -3,13 +3,13 @@ import React, { useState } from 'react';
 import { Table, Form, Input, Button, Select, Space } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
 
-export const Route = createFileRoute('/_authenticated/senseManagement/page1/')({
+export const Route = createFileRoute('/_authenticated/trainSupport/page1/')({
   component: RouteComponent,
   head: () => ({
-    meta: [{ title: '场景管理' }],
+    meta: [{ title: '培训支持' }],
   }),
   context: () => ({
-    breadcrumb: '场景管理',
+    breadcrumb: '培训支持',
   }),
 });
 
@@ -53,19 +53,21 @@ function RouteComponent() {
   const [data, setData] = useState<User[]>(initialData);
 
   const columns: ColumnsType<User> = [
-    { title: '场景ID', dataIndex: 'account', key: 'account' },
-    { title: '场景名称', dataIndex: 'name', key: 'name' },
-    { title: '场景类型', dataIndex: 'phone', key: 'phone' },
+    { title: '场所ID', dataIndex: 'account', key: 'account' },
+    { title: '场所名称', dataIndex: 'name', key: 'name' },
+    { title: '场所类型', dataIndex: 'phone', key: 'phone' },
+    { title: '演练主题', dataIndex: 'theme', key: 'account' },
     { title: '地址', dataIndex: 'company', key: 'company' },
     { title: '联系人', dataIndex: 'employeeId', key: 'employeeId' },
     { title: '联系电话', dataIndex: 'status', key: 'status' },
+    { title: '最后修改时间', dataIndex: 'lastModified', key: 'lastModified' },
     {
       title: '操作',
       key: 'action',
       render: (_, record) => (
         <Space>
           <Button size="small" type="link">
-            场景详情
+            详情
           </Button>
           {/* <Button size="small" type="link" danger>
             删除
@@ -98,17 +100,20 @@ function RouteComponent() {
     <div style={{ padding: 24 }}>
       {/* 查询表单 */}
       <Form form={form} layout="inline" style={{ marginBottom: 16 }}>
-        <Form.Item name="account" label="场景ID">
-          <Input placeholder="请输入场景ID" allowClear />
+        <Form.Item name="account" label="用户账号">
+          <Input placeholder="请输入账号" allowClear />
         </Form.Item>
-        <Form.Item name="name" label="场景名称">
+        <Form.Item name="name" label="中文姓名">
           <Input placeholder="请输入姓名" allowClear />
         </Form.Item>
-        <Form.Item name="employeeId" label="联系人">
+        <Form.Item name="employeeId" label="员工编号">
           <Input placeholder="请输入员工编号" allowClear />
         </Form.Item>
-        <Form.Item name="status" label="联系电话">
-        <Input placeholder="请输入联系电话" allowClear />
+        <Form.Item name="status" label="用户状态">
+          <Select placeholder="请选择状态" allowClear style={{ width: 120 }}>
+            <Select.Option value="启用">启用</Select.Option>
+            <Select.Option value="停用">停用</Select.Option>
+          </Select>
         </Form.Item>
         <Form.Item>
           <Space>

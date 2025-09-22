@@ -23,24 +23,31 @@ export interface MenuItem {
 
 export const MENU_ITEMS: MenuItem[] = [
   { key: 'home', text: '首页', icon: <HomeIcon />, path: '/' },
-  { key: 'threeBuild', text: '三维场景重建', icon: <Construction />, path: '/threeBuild' },
+  // { key: 'threeBuild', text: '三维场景重建', icon: <Construction />, path: '/threeBuild' },
   // {
-  //   key: 'form',
-  //   text: '表单',
-  //   icon: <TextFormatIcon />,
-  //   path: '/form',
+  //   key: 'visionMixin',
+  //   text: '视觉融合',
+  //   icon: <Visibility />,
+  //   children: [{ key: 'visionMixin-1', text: '视觉融合', icon: <Visibility />, path: '/visionMixin/page1' }],
   // },
-  {
-    key: 'visionMixin',
-    text: '视觉融合',
-    icon: <Visibility />,
-    children: [{ key: 'visionMixin-1', text: '视觉融合', icon: <Visibility />, path: '/visionMixin/page1' }],
-  },
   {
     key: 'dataAnalysis',
     text: '数据分析',
     icon: <Token />,
     children: [{ key: 'dataAnalysis-1', text: '数据分析', icon: <Token />, path: '/dataAnalysis/page1' }],
+    
+  },
+  {
+    key: 'realTime',
+    text: '实时监控',
+    icon: <Tab />,
+    children: [{ key: 'realTime-1', text: '实时监控', icon: <Tab />, path: '/realTime/page1' }],
+  },
+  {
+    key: 'trainSupport',
+    text: '培训支持',
+    icon: <Tab />,
+    children: [{ key: 'trainSupport-1', text: '培训支持', icon: <Tab />, path: '/trainSupport/page1' }],
   },
   // { key: 'pokemon', text: '宝可梦', icon: <CatchingPokemonIcon />, path: '/pokemon' },
   // { key: 'top-progress-bar', text: 'TopProgressBar', icon: <CatchingPokemonIcon />, path: '/top-progress-bar' },
@@ -59,21 +66,21 @@ export const MENU_ITEMS: MenuItem[] = [
 
   { key: 'userAdmin', text: '用户管理', icon: <Group />, path: '/userAdmin' },
   { key: 'systemConfig', text: '系统配置', icon: <Settings />, path: '/systemConfig' },
-  {
-    key: 'reports',
-    text: '数据报告',
-    icon: <ReportIcon />,
-    children: [
-      { key: 'report-daily', text: '每日报告', icon: <DescriptionIcon />, path: '/reports/daily' },
-      {
-        key: 'report-archived',
-        text: '归档报告',
-        icon: <ArchiveIcon />,
-        children: [
-          { key: 'report-2023', text: '2023年报告', icon: <ListIcon />, path: '/reports/archived/2023' },
-          { key: 'report-2022', text: '2022年报告', icon: <ListIcon />, path: '/reports/archived/2022' },
-        ],
-      },
-    ],
-  },
+  // {
+  //   key: 'reports',
+  //   text: '数据报告',
+  //   icon: <ReportIcon />,
+  //   children: [
+  //     { key: 'report-daily', text: '每日报告', icon: <DescriptionIcon />, path: '/reports/daily' },
+  //     {
+  //       key: 'report-archived',
+  //       text: '归档报告',
+  //       icon: <ArchiveIcon />,
+  //       children: [
+  //         { key: 'report-2023', text: '2023年报告', icon: <ListIcon />, path: '/reports/archived/2023' },
+  //         { key: 'report-2022', text: '2022年报告', icon: <ListIcon />, path: '/reports/archived/2022' },
+  //       ],
+  //     },
+  //   ],
+  // },
 ];
