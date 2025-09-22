@@ -61,7 +61,7 @@ export const MENU_ITEMS: MenuItem[] = [
   { key: 'systemConfig', text: '系统配置', icon: <Settings />, path: '/systemConfig' },
   {
     key: 'reports',
-    text: '报告',
+    text: '数据报告',
     icon: <ReportIcon />,
     children: [
       { key: 'report-daily', text: '每日报告', icon: <DescriptionIcon />, path: '/reports/daily' },
