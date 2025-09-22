@@ -1,9 +1,9 @@
-name: React Build
+name: Build and Deploy React App
 
 on:
   push:
     branches:
-      - master  # 监听 main 分支
+      - master
 
 jobs:
   build:
@@ -13,10 +13,10 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    - name: Setup Node.js
+    - name: Set up Node.js
       uses: actions/setup-node@v3
       with:
-        node-version: '20'  # 使用 Node 版本
+        node-version: '20'
 
     - name: Install dependencies
       run: npm install
@@ -24,8 +24,9 @@ jobs:
     - name: Build project
       run: npm run build
 
-    - name: Upload build artifacts
-      uses: actions/upload-artifact@v3
+    - name: Upload build artifact
+      uses: actions/upload-artifact@v4
       with:
-        name: build
-        path: build
+        name: build-artifact
+        path: build/
+        retention-days: 7
