@@ -6,7 +6,7 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { createRouter, RouterProvider } from '@tanstack/react-router';
 import { routeTree } from './routeTree.gen';
 import { theme } from './theme';
-
+import 'antd/dist/reset.css';
 // Import global styles
 import.meta.glob('./styles/*.css', { eager: true });
 

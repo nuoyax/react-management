@@ -5,6 +5,8 @@ import CatchingPokemonIcon from '@mui/icons-material/CatchingPokemon';
 import DescriptionIcon from '@mui/icons-material/Description';
 import HomeIcon from '@mui/icons-material/Home';
 import ListIcon from '@mui/icons-material/List';
+
+import { Construction, Group } from '@mui/icons-material';
 import PeopleIcon from '@mui/icons-material/People';
 import TextFormatIcon from '@mui/icons-material/TextFormat';
 
@@ -21,12 +23,15 @@ export interface MenuItem {
 
 export const MENU_ITEMS: MenuItem[] = [
   { key: 'home', text: '首页', icon: <HomeIcon />, path: '/' },
+  { key: 'threeBuild', text: '三维场景重建', icon: <Construction />, path: '/threeBuild' },
   {
     key: 'form',
     text: '表单',
     icon: <TextFormatIcon />,
     path: '/form',
   },
+  { key: 'userAdmin', text: '用户管理', icon: <Group />, path: '/userAdmin' },
+
   { key: 'pokemon', text: '宝可梦', icon: <CatchingPokemonIcon />, path: '/pokemon' },
   { key: 'top-progress-bar', text: 'TopProgressBar', icon: <CatchingPokemonIcon />, path: '/top-progress-bar' },
   {
