@@ -16,6 +16,7 @@ import { Route as authLoginRouteImport } from './routes/(auth)/login';
 import { Route as AuthenticatedUserAdminIndexRouteImport } from './routes/_authenticated/userAdmin/index';
 import { Route as AuthenticatedTopProgressBarIndexRouteImport } from './routes/_authenticated/top-progress-bar/index';
 import { Route as AuthenticatedThreeBuildIndexRouteImport } from './routes/_authenticated/threeBuild/index';
+import { Route as AuthenticatedSystemConfigIndexRouteImport } from './routes/_authenticated/systemConfig/index';
 import { Route as AuthenticatedPokemonIndexRouteImport } from './routes/_authenticated/pokemon/index';
 import { Route as AuthenticatedFormIndexRouteImport } from './routes/_authenticated/form/index';
 import { Route as AuthenticatedPokemonIdRouteImport } from './routes/_authenticated/pokemon/$id';
@@ -57,6 +58,12 @@ const AuthenticatedThreeBuildIndexRoute =
     path: '/threeBuild/',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any);
+const AuthenticatedSystemConfigIndexRoute =
+  AuthenticatedSystemConfigIndexRouteImport.update({
+    id: '/systemConfig/',
+    path: '/systemConfig/',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any);
 const AuthenticatedPokemonIndexRoute =
   AuthenticatedPokemonIndexRouteImport.update({
     id: '/pokemon/',
@@ -81,6 +88,7 @@ export interface FileRoutesByFullPath {
   '/pokemon/$id': typeof AuthenticatedPokemonIdRoute;
   '/form': typeof AuthenticatedFormIndexRoute;
   '/pokemon': typeof AuthenticatedPokemonIndexRoute;
+  '/systemConfig': typeof AuthenticatedSystemConfigIndexRoute;
   '/threeBuild': typeof AuthenticatedThreeBuildIndexRoute;
   '/top-progress-bar': typeof AuthenticatedTopProgressBarIndexRoute;
   '/userAdmin': typeof AuthenticatedUserAdminIndexRoute;
@@ -92,6 +100,7 @@ export interface FileRoutesByTo {
   '/pokemon/$id': typeof AuthenticatedPokemonIdRoute;
   '/form': typeof AuthenticatedFormIndexRoute;
   '/pokemon': typeof AuthenticatedPokemonIndexRoute;
+  '/systemConfig': typeof AuthenticatedSystemConfigIndexRoute;
   '/threeBuild': typeof AuthenticatedThreeBuildIndexRoute;
   '/top-progress-bar': typeof AuthenticatedTopProgressBarIndexRoute;
   '/userAdmin': typeof AuthenticatedUserAdminIndexRoute;
@@ -105,6 +114,7 @@ export interface FileRoutesById {
   '/_authenticated/pokemon/$id': typeof AuthenticatedPokemonIdRoute;
   '/_authenticated/form/': typeof AuthenticatedFormIndexRoute;
   '/_authenticated/pokemon/': typeof AuthenticatedPokemonIndexRoute;
+  '/_authenticated/systemConfig/': typeof AuthenticatedSystemConfigIndexRoute;
   '/_authenticated/threeBuild/': typeof AuthenticatedThreeBuildIndexRoute;
   '/_authenticated/top-progress-bar/': typeof AuthenticatedTopProgressBarIndexRoute;
   '/_authenticated/userAdmin/': typeof AuthenticatedUserAdminIndexRoute;
@@ -118,6 +128,7 @@ export interface FileRouteTypes {
     | '/pokemon/$id'
     | '/form'
     | '/pokemon'
+    | '/systemConfig'
     | '/threeBuild'
     | '/top-progress-bar'
     | '/userAdmin';
@@ -129,6 +140,7 @@ export interface FileRouteTypes {
     | '/pokemon/$id'
     | '/form'
     | '/pokemon'
+    | '/systemConfig'
     | '/threeBuild'
     | '/top-progress-bar'
     | '/userAdmin';
@@ -141,6 +153,7 @@ export interface FileRouteTypes {
     | '/_authenticated/pokemon/$id'
     | '/_authenticated/form/'
     | '/_authenticated/pokemon/'
+    | '/_authenticated/systemConfig/'
     | '/_authenticated/threeBuild/'
     | '/_authenticated/top-progress-bar/'
     | '/_authenticated/userAdmin/';
@@ -203,6 +216,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedThreeBuildIndexRouteImport;
       parentRoute: typeof AuthenticatedRouteRoute;
     };
+    '/_authenticated/systemConfig/': {
+      id: '/_authenticated/systemConfig/';
+      path: '/systemConfig';
+      fullPath: '/systemConfig';
+      preLoaderRoute: typeof AuthenticatedSystemConfigIndexRouteImport;
+      parentRoute: typeof AuthenticatedRouteRoute;
+    };
     '/_authenticated/pokemon/': {
       id: '/_authenticated/pokemon/';
       path: '/pokemon';
@@ -232,6 +252,7 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedPokemonIdRoute: typeof AuthenticatedPokemonIdRoute;
   AuthenticatedFormIndexRoute: typeof AuthenticatedFormIndexRoute;
   AuthenticatedPokemonIndexRoute: typeof AuthenticatedPokemonIndexRoute;
+  AuthenticatedSystemConfigIndexRoute: typeof AuthenticatedSystemConfigIndexRoute;
   AuthenticatedThreeBuildIndexRoute: typeof AuthenticatedThreeBuildIndexRoute;
   AuthenticatedTopProgressBarIndexRoute: typeof AuthenticatedTopProgressBarIndexRoute;
   AuthenticatedUserAdminIndexRoute: typeof AuthenticatedUserAdminIndexRoute;
@@ -242,6 +263,7 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedPokemonIdRoute: AuthenticatedPokemonIdRoute,
   AuthenticatedFormIndexRoute: AuthenticatedFormIndexRoute,
   AuthenticatedPokemonIndexRoute: AuthenticatedPokemonIndexRoute,
+  AuthenticatedSystemConfigIndexRoute: AuthenticatedSystemConfigIndexRoute,
   AuthenticatedThreeBuildIndexRoute: AuthenticatedThreeBuildIndexRoute,
   AuthenticatedTopProgressBarIndexRoute: AuthenticatedTopProgressBarIndexRoute,
   AuthenticatedUserAdminIndexRoute: AuthenticatedUserAdminIndexRoute,
