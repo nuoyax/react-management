@@ -1,0 +1,102 @@
+{
+  "color": ["#409EFF"],
+  "backgroundColor": "#fff",
+  "textStyle": {
+    "color": "#888",
+    "fontWeight": 500
+  },
+  "title": {
+    "textStyle": {
+      "color": "#333",
+      "fontWeight": 600
+    },
+    "subtextStyle": {
+      "color": "#666"
+    }
+  },
+  "tooltip": {
+    "axisPointer": {
+      "lineStyle": {
+        "color": "#ddd",
+        "width": 1
+      },
+      "crossStyle": {
+        "color": "#ddd",
+        "width": 1
+      }
+    },
+    "backgroundColor": "rgba(50,50,50,0.9)",
+    "borderRadius": 8,
+    "borderWidth": 0,
+    "textStyle": {
+      "color": "#fff",
+      "fontSize": 14
+    },
+    "padding": 12
+  },
+  "grid": {
+    "left": 30,
+    "right": 30,
+    "top": 40,
+    "bottom": 40,
+    "containLabel": true
+  },
+  "legend": {
+    "textStyle": {
+      "color": "#666",
+      "fontWeight": 500
+    },
+    "icon": "circle",
+    "itemWidth": 12,
+    "itemHeight": 12
+  },
+  "categoryAxis": {
+    "axisLine": {
+      "lineStyle": {
+        "color": "#d9d9d9"
+      }
+    },
+    "axisTick": {
+      "alignWithLabel": true
+    },
+    "axisLabel": {
+      "color": "#888",
+      "fontWeight": 500
+    }
+  },
+  "valueAxis": {
+    "axisLine": {
+      "show": true,
+      "lineStyle": {
+        "color": "#d9d9d9",
+        "width": 1
+      }
+    },
+    "axisLabel": {
+      "color": "#888",
+      "fontWeight": 500
+    },
+    "splitLine": {
+      "lineStyle": {
+        "color": "#f0f0f0",
+        "type": "dashed"
+      }
+    }
+  },
+  "line": {
+    "smooth": true,
+    "symbol": "circle",
+    "symbolSize": 10,
+    "lineStyle": {
+      "width": 4,
+      "shadowColor": "rgba(64,158,255,0.3)",
+      "shadowBlur": 8
+    },
+    "itemStyle": {
+      "borderColor": "#fff",
+      "borderWidth": 2,
+      "shadowColor": "rgba(64,158,255,0.2)",
+      "shadowBlur": 6
+    }
+  }
+}

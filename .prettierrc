@@ -1,0 +1,16 @@
+{
+  "printWidth": 120,
+  "singleQuote": true,
+  "arrowParens": "avoid",
+  "endOfLine": "auto",
+  "plugins": [
+    "prettier-plugin-tailwindcss"
+  ],
+  "tailwindAttributes": [
+    "className"
+  ],
+  "tailwindFunctions": [
+    "clsx"
+  ],
+  "tailwindPreserveWhitespace": true
+}

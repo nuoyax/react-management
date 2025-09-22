@@ -1,0 +1,7 @@
+**/*.svg
+package-lock.json
+/node_modules/
+/dist/
+/.husky/
+/public/
+routeTree.gen.ts
