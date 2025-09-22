@@ -11,7 +11,7 @@ import { NotificationsPopover } from './notifications-popover';
 import { Sidebar } from './sidebar';
 import { ThemeSwitch } from './theme-switch';
 
-import LogoUrl from '/logo.svg';
+import LogoUrl from '/logo.png';
 
 export function AuthenticatedLayout() {
   const [isCollapsed, setIsCollapsed] = useAtom(sidebarCollapsedAtom);
@@ -29,9 +29,9 @@ export function AuthenticatedLayout() {
         }}
       >
         <Box className="mx-1 flex h-5 shrink-0 items-center space-x-1 rounded-lg" component={Link} to="/">
-          <img src={LogoUrl} alt="Logo" className="h-5" />
+          <img src={LogoUrl} alt="Logo" className="w-5" />
           <Typography variant="h6" sx={{ fontWeight: 'bold' }} noWrap>
-            Fine 后台管理
+          应急救援后台管理
           </Typography>
         </Box>
         <div>

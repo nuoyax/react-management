@@ -1,7 +1,13 @@
 import { Grid } from '@mui/material';
 import { EChartsOption } from 'echarts/types/dist/shared';
 import { BaseChart } from './components/base-chart';
-
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import { Margin } from '@mui/icons-material';
 // 销售数据
 const salesData = [
   { product: '笔记本电脑', '2021': 4300, '2022': 5000, '2023': 6800 },
@@ -275,41 +281,63 @@ const pieChartOption: EChartsOption = {
   ],
 };
 
-
-const barOption:EChartsOption={
+const barOption: EChartsOption = {
   xAxis: {
     type: 'category',
-    data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+    data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
   },
   yAxis: {
-    type: 'value'
+    type: 'value',
   },
   series: [
     {
       data: [120, 200, 150, 80, 70, 110, 130],
-      type: 'bar'
-    }
-  ]
+      type: 'bar',
+    },
+  ],
 };
 
 export function DemoECharts() {
   return (
-    <Grid container spacing={2}>
-      <Grid size={{ xs: 12, md: 6 }}>
-        <BaseChart option={barChartOption} style={{ height: '400px', width: '100%' }} />
-      </Grid>
+    <div>
+      <div style={{margin:'50px'}}>
+  
+        <Grid container spacing={10}>
+          {Array.from({ length: 6 }).map((e, i) => (
+            <Grid size={{ xs: 12, md: 2 }}>
+              <Card  variant="outlined" sx={{ minWidth: 275 }}>
+                <CardContent>
+                  <Typography gutterBottom sx={{ color: 'text.secondary', fontSize: 14 }}>
+                    港口流量{i}
+                  </Typography>
+                  <Typography variant="h5" component="div">
+                    99999+
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+          ))}
+        </Grid>
+      </div>
+      <div>
+        <Grid container spacing={2}>
+          <Grid size={{ xs: 12, md: 6 }}  style={{margin:'50px 0'}}>
+            <BaseChart option={barChartOption} style={{ height: '400px', width: '100%' }} />
+          </Grid>
 
-      <Grid size={{ xs: 12, md: 6 }}>
-        <BaseChart option={lineChartOption} style={{ height: '400px', width: '100%' }} />
-      </Grid>
+          <Grid size={{ xs: 12, md: 6 }}  style={{margin:'50px 0'}}>
+            <BaseChart option={lineChartOption} style={{ height: '400px', width: '100%' }} />
+          </Grid>
 
-      <Grid size={{ xs: 12, md: 6 }}>
-        <BaseChart option={pieChartOption} style={{ height: '400px', width: '100%' }} />
-      </Grid>
-      
-      <Grid size={{ xs: 12, md: 6 }}>
-        <BaseChart option={barOption } style={{ height: '400px', width: '100%' }} />
-      </Grid>
-    </Grid>
+          <Grid size={{ xs: 12, md: 6 }}  style={{margin:'200px 0'}}>
+            <BaseChart option={pieChartOption} style={{ height: '400px', width: '100%' }} />
+          </Grid>
+
+          <Grid size={{ xs: 12, md: 6 }}  style={{margin:'200px 0'}}>
+            <BaseChart option={barOption} style={{ height: '400px', width: '100%' }} />
+          </Grid>
+        </Grid>
+      </div>
+    </div>
   );
 }

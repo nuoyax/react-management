@@ -26,8 +26,8 @@ function RouteComponent() {
 
         <div className="flex h-full flex-col justify-between text-white">
           <div className="space-y-6">
-            <h1 className="text-4xl font-bold">Admin Pro</h1>
-            <p className="text-xl opacity-90">企业级管理中台解决方案</p>
+            <h1 className="text-4xl font-bold">Emergency</h1>
+            <p className="text-xl opacity-90">应急管理系统（海南）</p>
           </div>
 
           <div className="flex space-x-4 opacity-80">

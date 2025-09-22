@@ -11,5 +11,5 @@ export const Route = createFileRoute('/_authenticated/threeBuild/')({
 });
 
 function RouteComponent() {
-  return <div>Hello "/_authenticated/threeBuild/"!</div>;
+  return <iframe style={{width:'100%',height:'100%'}} src='https://ion.cesium.com/stories/viewer/?id=e54cebfb-e227-4cae-9a7d-242c949e0cd6'/>
 }
