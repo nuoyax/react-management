@@ -6,7 +6,7 @@ import DescriptionIcon from '@mui/icons-material/Description';
 import HomeIcon from '@mui/icons-material/Home';
 import ListIcon from '@mui/icons-material/List';
 
-import { Construction, Group, Settings } from '@mui/icons-material';
+import { Construction, Group, Settings, Token, Tab } from '@mui/icons-material';
 import PeopleIcon from '@mui/icons-material/People';
 import TextFormatIcon from '@mui/icons-material/TextFormat';
 
@@ -30,16 +30,30 @@ export const MENU_ITEMS: MenuItem[] = [
   //   icon: <TextFormatIcon />,
   //   path: '/form',
   // },
+
+  {
+    key: 'dataAnalysis',
+    text: '数据分析',
+    icon: <Token />,
+    children: [{ key: 'dataAnalysis-1', text: '数据分析', icon: <Token />, path: '/dataAnalysis/page1' }],
+  },
+  // { key: 'pokemon', text: '宝可梦', icon: <CatchingPokemonIcon />, path: '/pokemon' },
+  // { key: 'top-progress-bar', text: 'TopProgressBar', icon: <CatchingPokemonIcon />, path: '/top-progress-bar' },
+  {
+    key: 'senseManagement',
+    text: '场景管理',
+    icon: <Tab />,
+    children: [{ key: 'senseManagement-1', text: '场景管理', icon: <Tab />, path: '/senseManagement/page1' }],
+  },
+  // {
+  //   key: 'management',
+  //   text: '管理',
+  //   icon: <PeopleIcon />,
+  //   children: [{ key: 'user-list', text: '用户列表', icon: <ListIcon />, path: '/management/users' }],
+  // },
+
   { key: 'userAdmin', text: '用户管理', icon: <Group />, path: '/userAdmin' },
   { key: 'systemConfig', text: '系统配置', icon: <Settings />, path: '/systemConfig' },
-  { key: 'pokemon', text: '宝可梦', icon: <CatchingPokemonIcon />, path: '/pokemon' },
-  { key: 'top-progress-bar', text: 'TopProgressBar', icon: <CatchingPokemonIcon />, path: '/top-progress-bar' },
-  {
-    key: 'management',
-    text: '管理',
-    icon: <PeopleIcon />,
-    children: [{ key: 'user-list', text: '用户列表', icon: <ListIcon />, path: '/management/users' }],
-  },
   {
     key: 'reports',
     text: '报告',

@@ -275,6 +275,23 @@ const pieChartOption: EChartsOption = {
   ],
 };
 
+
+const barOption:EChartsOption={
+  xAxis: {
+    type: 'category',
+    data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+  },
+  yAxis: {
+    type: 'value'
+  },
+  series: [
+    {
+      data: [120, 200, 150, 80, 70, 110, 130],
+      type: 'bar'
+    }
+  ]
+};
+
 export function DemoECharts() {
   return (
     <Grid container spacing={2}>
@@ -288,6 +305,10 @@ export function DemoECharts() {
 
       <Grid size={{ xs: 12, md: 6 }}>
         <BaseChart option={pieChartOption} style={{ height: '400px', width: '100%' }} />
+      </Grid>
+      
+      <Grid size={{ xs: 12, md: 6 }}>
+        <BaseChart option={barOption } style={{ height: '400px', width: '100%' }} />
       </Grid>
     </Grid>
   );
