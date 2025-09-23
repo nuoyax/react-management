@@ -34,7 +34,8 @@ const PopoverMenuItem: React.FC<PopoverMenuItemProps> = ({ item, level, onHover,
   const handleClick = () => {
     // 只有没有子菜单的项是可点击跳转的
     if (!hasChildren) {
-      onClose();
+      // 先让路由跳转，延迟关闭 popover
+      setTimeout(() => onClose(), 150); // 延迟关闭避免瞬间收起
     }
   };
 

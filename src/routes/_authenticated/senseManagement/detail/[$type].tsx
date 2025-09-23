@@ -1,0 +1,86 @@
+import React, { useEffect, useRef } from 'react';
+import { createFileRoute, useParams } from '@tanstack/react-router';
+
+export const Route = createFileRoute('/_authenticated/senseManagement/detail/$type')({
+  component: RouteComponent,
+  head: () => ({
+    meta: [{ title: '场景管理详情' }],
+  }),
+  context: () => ({
+    breadcrumb: '场景管理详情',
+  }),
+});
+
+const mock = [
+  'https://sandcastle.cesium.com/standalone.html#c=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',
+  'https://sandcastle.cesium.com/standalone.html#c=xVVRb9owEP4rN7SHICGnW9dqolCto31A6rRJ0O0lUmsSB7w5PmQ7MIr47zvjpCUU1D1tElJk33f29913PuIYrjSI37yYKwGYQ2mlngKHyWlWgJNKWOHAIaSKWyvzFXCNbiZMA8ASnaK2DhZSLCnWBy2WMBBWlgX7vt2Lkla6XQ9QOy61MEmrA+tEAzhhDO1064RxWLPcYPEDjcqqjajdSfSmfZHoRDuzCskxCQCNpuCqyTkN93g18xk6nBpeFILyfFZgW0P7wJdcuvr+8Dm9HlfiPI8h6itLi2EWfTj5eH7uWUAll9lUaMHmRhbSyYWwjGdZVB3eAD4iFmPcDT2TqQosU+4k6uruO6Og7zEASYuxeLT16Zo7HjdYxoNGdvytoTiubfppUSeti6e6NQpWWpE1nCab90pXY19h/TcFJWVREHZMeCeE1+HzAreai6eOGbwIscHNaHj35f70+n48vL2pztpsv8GSg9cy61b0Dhr9u8t+5MNRRSlFhaZLxpjphEfvz846cBJ+7KxN3e1Rm9cb5SCRujfIpjHZYHkhDriVo9nT0YFJ6cAInQlDgPAw1CogsZhzI6kH2LOBGvXg33loZ7jsQs6VFQcsOcblf7hyjEttzIjrLOXWKeHhY5xOlfhcOoeaJt2IZO7VxE87Z0rRgbzUqd+BKJ2J9JfI2nV9jrSkP6wPFfgiQI+XKqDf7MK3cjdAwHQGEQ1TNNWdvgeQJCicRg83PgAKeeaHZtVoXXi73mZsHsIprU6rt/Xjsjb1kyzmaBxASf1AQ8oJGlLc0VSalMTBsdTadsW7F+/m9jK5AJn1D/w3hGJQJC+VGslHkbQuezHhX6RWhL8uhFF85WGzd5e3YZMx1otpeTjTIaoJN3snk8CZc3PbjWP7bHIgyOgNxVN6UYKm6h8',
+  'https://sandcastle.cesium.com/standalone.html#c=nVdtTxw3EP4rFuqHPYn49riEhlc1JYgSkYLCNZXSq4TPO7frxGuvbO/RS8R/7/hl742jNPkCrD0vz8w8M2O4VtaRmYB7MOSEKLgnZ2BFW9OP4Swb7/DwfaaVY0KBGe/skm9jRYgTNUg8OSRTJi3s+jOmRM2c0Gr10HJQ8F4XcCP4FzCrVxNm4YrNwTy+KkFz1MGzBOhSq4t4dmP0TODVaN4Avbi+vrg6Dyr9PhlVQEqpJ0AKDZYo7TAmKIjTxJ8J20h0V3TiVigOxKHSTaWdNsCksE5wMnxLRkKiBRSQbYEyYAzGH5B5+0uoD72jMZ6jtXPFJhKIAYXghCqDYftlPlYxwTRkguLJG1dr21Rg8KvS95h5Z1oIdnioCG8NmnEjzDFepgy8a6Vg6i1zQKdG15dWv97PB5nHNN7Zy/fyF/ngRX4w2hse5vnh8IDmg9d7+4MD/JHnB/uD4cv9T1i+sfKIEyQuNf9C192tfHWhvSmKp1I0VhIcKbUuJYQDcKjlzDzSZO0CjbN7JlwXEUdzDi6CyLr54dukkgUroVrXSs5DTqMCSXQwhDPly9tarPS9cFUn8ARiSsgtYvGW7hLN7khjdAPGzYmehpvUE6EcpuVoh+jGU9t6Mv0nGWlErBHuH8iw8k+EFBFdLEjt6x1YGOhDyBpDGiNq4cQMobKiyNZS6MUfMGLHK5IhKbXpxUR7pFoClbrM7s79BZGaFZ6HT5HbRZMB70/fgrGHu+Aglf0KDRDmE/3u9vp3MkX5mOBGWxGTUcBUqI7smMTPwB2Zau0wCOUiORafq8SIRDdgdWs4bDIDE/whXQWyv7EI9LLI9l4Nh4PhICYtmiiYY7dbjXjcVvuOSQLUZyTrfKZBhnYkq5uRvjC6VcVmbVaqs/QUC7P87gQXkSKU5S3FbsJ0odaMyRZ/YcqKLAun8x45OY0wEuqQUSjSNW20nJda9QKiGPfCS3dJdev8LEavYSwlNFjBT1rXnrAeDPKBh+m8i4O6IDb1QKXrSPdlSjmrwbDr6TT27Mpa+A0CpW4E8u8DUyVka9jfM1dRpz+gEFM2O3hF8wj8KYkXP6+IvM5zmq/EmdL+FWMY6WwR9e4avjVRH8uvrXOYEn/it46kXNc1BkwnMMUuOP8HeIsjFAt4PsMcX2FTYNMZrIcvRccJoDhVOMjlbPan34Ho4Uc6FcfRZ2Qs3d6OfgozZKtoGi9soMRihiVa4LQJxfSG8GtLI8bKLhv3ZAuNKoFBGF7NaQnuo+dq1qMLlaPFdkoIbqKaXafI2frtmZYSoaCBOMqTL3tI/oo5fVq1m/1kCftw+WcizUNkz9/dKl6blnQL1M2j1R2XJqJfAn4haLuSywIxlipOtEkrpC/YloW3cbU5k+KvxXqLm1yrtfm29/L5pbDh5kfIFgN6ZgvcYudwZp0MHTPSJSY3dhi+DW/942WRqJQgfCCGCUqmrQp1JxmvAN93RW9rhronUBI6Wjypnne9pPezTpdk/yF3npnEMYN9sRijzzvdpBouAv9ELL7b/aWagbEQDHq38fH5//2KpP/I787uzrF1cwmnXav9IupGG0dIa2RGad9BjY9mB7Y/aVETW8raXhqHx/1V3eNCzIgoTrb8z+BXrLV4M22lvBVfYbxzetxH+UeqiZzXiBef6l6sGpxexUNK6XEfP7drOq3lhJkNyxhg5VxjD/t9u8wwT+9PXfdLhvPJzPv/Ag',
+  'https://sandcastle.cesium.com/standalone.html#c=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',
+  'https://sandcastle.cesium.com/standalone.html#c=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',
+  'https://sandcastle.cesium.com/standalone.html#c=bVPbThsxEP2VUdSHjZR6b97shgZUlFYqElUjoO3LPuB4Dbj1eiLbAQXEv3f2AqWFl2zmds6ZYzuO16htgJXBXQObPawdXjFYq6AcHBuj7AxWaHbtRgv4bvWtcl6HPZzhBoOWHk7FhsG5FNZqe90BHBv1S9jGIVw4lBKNBgrhqwhKw0qjFM5oxWor0foAt1rdEdUhWHUHK+X1rmU/+lxUT2Qfr9AGoa1y9WQGD7UFIHGOMgdPAxdDzK4ctj/RmWZMRNNZbR+nH2pb24GIeamsYlK0ygnmVei4oh60UT5oK4JGAn6hZiVcoH/C5lHXBsB5kpacsznnKS/ylM+GfJYVSZEyniZltUjTpMjGAi8WBc8Slpe8rDjP8z4/7X/RaUXrvWL9okRDjq51kDdnaMzIXRDrvMzzKimSfFEW5UjxPmFZOZ8nZVrkVb6oqvlYmLOsSklMVRY8SZKqeOYefQluP5g6nEfQRpEtdCDiTujwbEL/yT9dDOXe6RO0x56CkyZK5zxLOzyAf3zeOt3qQLfGM9E00QjeNT6CFLQaRHRS6KZ/JaBRzOB1dPm5K4DB3ocnXQfw7qGfeLwcUCazydKHvVFHw74AH3W7RRcAds5EjMVBtVtDt8/Hm538Tdql94NUgGX8cnbZ6FvQzeEbFw+kEd5T5WpnzLm+V/XkaBlT/6vRUfA3eilG7Lu2m/TodEgyxpYxhW9PBkSzEe4/ZFrwJoStP4hjTw9JCh/IoUEgk9jG14KeqdvHfwA',
+];
+// function RouteComponent() {
+//   const cesiumRef = useRef<HTMLDivElement>(null);
+
+//   // 请替换为你自己的有效 Cesium Ion Access Token
+//   const CESIUM_TOKEN =
+//     'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI3NjNkYTE5My01OWVhLTQwMmItYTU3YS1iODRlNjM2MDRiYjMiLCJpZCI6MzQzNDEwLCJpYXQiOjE3NTg2MDM0MzJ9.WguokUDYUeTkTJWhpVKXXDVme3KaIJJ7XPM0AVL5NNg';
+//   (window as any).Cesium.Ion.defaultAccessToken = CESIUM_TOKEN;
+
+//   useEffect(() => {
+//     const Cesium = (window as any).Cesium;
+//     if (!cesiumRef.current || !Cesium) return;
+
+//     // 初始化 Viewer
+//     const viewer = new Cesium.Viewer(cesiumRef.current, {
+//       timeline: false,
+//       animation: false,
+//       baseLayerPicker: false,
+//     });
+
+//     // 加载世界地形（Cesium 1.333 版本没有 createWorldTerrain）
+//     viewer.terrainProvider = new Cesium.CesiumTerrainProvider({
+//       url: Cesium.IonResource.fromAssetId(1),
+//     });
+
+//     // 加载 3D Tiles
+//     try {
+//       const tileset = new Cesium.Cesium3DTileset({
+//         url: Cesium.IonResource.fromAssetId('177'),
+//       });
+
+//       viewer.scene.primitives.add(tileset);
+
+//       // 等待 tileset.readyEvent 才能安全 zoomTo
+//       if (tileset.readyEvent) {
+//         tileset.readyEvent.addEventListener(() => {
+//           viewer.zoomTo(tileset);
+//         });
+//       } else {
+//         console.warn('tileset.readyEvent 不存在，可能 AssetId 不正确或版本不兼容');
+//       }
+//     } catch (error) {
+//       console.error('加载 3D Tiles 出错:', error);
+//     }
+
+//     // 设置初始相机视角
+//     const initialPosition = new Cesium.Cartesian3(-1111583.3721328347, -5855888.151574568, 2262561.444696748);
+//     const initialOrientation = Cesium.HeadingPitchRoll.fromDegrees(100.0, -15.0, 0.0);
+//     viewer.scene.camera.setView({
+//       destination: initialPosition,
+//       orientation: initialOrientation,
+//       endTransform: Cesium.Matrix4.IDENTITY,
+//     });
+
+//     // 清理
+//     return () => {
+//       viewer.destroy();
+//     };
+//   }, []);
+
+//   return <div ref={cesiumRef} style={{ width: '100%', height: '600px' }} />;
+// }
+function RouteComponent() {
+  const { type } = useParams({ from: '/_authenticated/senseManagement/detail/$type' });
+  return <iframe style={{ width: '100%', height: '80vh' }} src={mock[(type as any) || 0]} />;
+}

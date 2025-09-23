@@ -1,6 +1,7 @@
-import { createFileRoute } from '@tanstack/react-router';
+import { createFileRoute, useNavigate } from '@tanstack/react-router';
 import React, { useState } from 'react';
-import { Table, Form, Input, Button, Select, Space } from 'antd';
+import { Table, Form, Input, Button, Select, Space, Row, Col } from 'antd';
+
 import type { ColumnsType } from 'antd/es/table';
 
 export const Route = createFileRoute('/_authenticated/senseManagement/page1/')({
@@ -13,63 +14,121 @@ export const Route = createFileRoute('/_authenticated/senseManagement/page1/')({
   }),
 });
 
-interface User {
+interface Scene {
   key: number;
-  account: string;
-  name: string;
-  phone: string;
-  company: string;
-  employeeId: string;
-  lastModified: string;
-  status: string;
+  sceneId: string;
+  sceneName: string;
+  sceneType: string;
+  address: string;
+  contactPerson: string;
+  contactPhone: string;
 }
 
-// 模拟数据
-const initialData: User[] = [
+const initialData: Scene[] = [
   {
     key: 1,
-    account: 'user001',
-    name: '张三',
-    phone: '13800000001',
-    company: '北京分公司',
-    employeeId: 'E001',
-    lastModified: '2025-09-20 10:21',
-    status: '启用',
+    sceneId: 'S001',
+    sceneName: '学校操场演练',
+    sceneType: '学校',
+    address: '北京市朝阳区某中学',
+    contactPerson: '张三',
+    contactPhone: '13800000001',
   },
   {
     key: 2,
-    account: 'user002',
-    name: '李四',
-    phone: '13800000002',
-    company: '上海分公司',
-    employeeId: 'E002',
-    lastModified: '2025-09-21 15:42',
-    status: '停用',
+    sceneId: 'S002',
+    sceneName: '公园消防演练',
+    sceneType: '公园',
+    address: '上海市浦东新区世纪公园',
+    contactPerson: '李四',
+    contactPhone: '13800000002',
+  },
+  {
+    key: 3,
+    sceneId: 'S003',
+    sceneName: '医院应急疏散演练',
+    sceneType: '医院',
+    address: '广州市天河区某医院',
+    contactPerson: '王五',
+    contactPhone: '13800000003',
+  },
+  {
+    key: 4,
+    sceneId: 'S004',
+    sceneName: '商场火灾演练',
+    sceneType: '商场',
+    address: '深圳市福田区某购物中心',
+    contactPerson: '赵六',
+    contactPhone: '13800000004',
+  },
+  {
+    key: 5,
+    sceneId: 'S005',
+    sceneName: '工厂安全演练',
+    sceneType: '工厂',
+    address: '苏州市工业园区某工厂',
+    contactPerson: '钱七',
+    contactPhone: '13800000005',
+  },
+  {
+    key: 6,
+    sceneId: 'S006',
+    sceneName: '地铁站紧急疏散演练',
+    sceneType: '交通设施',
+    address: '北京市地铁2号线某站',
+    contactPerson: '孙八',
+    contactPhone: '13800000006',
+  },
+  {
+    key: 7,
+    sceneId: 'S007',
+    sceneName: '住宅小区防火演练',
+    sceneType: '住宅小区',
+    address: '杭州市西湖区某小区',
+    contactPerson: '周九',
+    contactPhone: '13800000007',
+  },
+  {
+    key: 8,
+    sceneId: 'S008',
+    sceneName: '图书馆地震演练',
+    sceneType: '公共建筑',
+    address: '武汉市洪山区某图书馆',
+    contactPerson: '吴十',
+    contactPhone: '13800000008',
   },
 ];
 
 function RouteComponent() {
+  const navigate = useNavigate();
   const [form] = Form.useForm();
-  const [data, setData] = useState<User[]>(initialData);
+  const [data, setData] = useState<Scene[]>(initialData);
 
-  const columns: ColumnsType<User> = [
-    { title: '场景ID', dataIndex: 'account', key: 'account' },
-    { title: '场景名称', dataIndex: 'name', key: 'name' },
-    { title: '场景类型', dataIndex: 'phone', key: 'phone' },
-    { title: '地址', dataIndex: 'company', key: 'company' },
-    { title: '联系人', dataIndex: 'employeeId', key: 'employeeId' },
-    { title: '联系电话', dataIndex: 'status', key: 'status' },
+  const columns: ColumnsType<Scene> = [
+    { title: '场景ID', dataIndex: 'sceneId', key: 'sceneId' },
+    { title: '场景名称', dataIndex: 'sceneName', key: 'sceneName' },
+    { title: '场景类型', dataIndex: 'sceneType', key: 'sceneType' },
+    { title: '地址', dataIndex: 'address', key: 'address' },
+    { title: '联系人', dataIndex: 'contactPerson', key: 'contactPerson' },
+    { title: '联系电话', dataIndex: 'contactPhone', key: 'contactPhone' },
     {
       title: '操作',
       key: 'action',
-      render: (_, record) => (
+      render: (_, record, index) => (
         <Space>
-          <Button size="small" type="link">
+          <Button
+            size="small"
+            type="link"
+            onClick={() =>
+              // @ts-ignore
+              navigate({
+                to: '/senseManagement/detail/$type',
+                params: { type: (index + 1).toString() },
+              })
+            }
+          >
             场景详情
           </Button>
-          {/* <Button size="small" type="link" danger>
-            删除
-          </Button> */}
         </Space>
       ),
     },
@@ -77,13 +136,14 @@ function RouteComponent() {
 
   // 查询
   const handleSearch = () => {
-    const { account, name, employeeId, status } = form.getFieldsValue();
+    const { sceneId, sceneName, sceneType, contactPerson, contactPhone } = form.getFieldsValue();
     const filtered = initialData.filter(
       item =>
-        (!account || item.account.includes(account)) &&
-        (!name || item.name.includes(name)) &&
-        (!employeeId || item.employeeId.includes(employeeId)) &&
-        (!status || item.status === status),
+        (!sceneId || item.sceneId.includes(sceneId)) &&
+        (!sceneName || item.sceneName.includes(sceneName)) &&
+        (!sceneType || item.sceneType.includes(sceneType)) &&
+        (!contactPerson || item.contactPerson.includes(contactPerson)) &&
+        (!contactPhone || item.contactPhone.includes(contactPhone)),
     );
     setData(filtered);
   };
@@ -97,31 +157,48 @@ function RouteComponent() {
   return (
     <div style={{ padding: 24 }}>
       {/* 查询表单 */}
-      <Form form={form} layout="inline" style={{ marginBottom: 16 }}>
-        <Form.Item name="account" label="场景ID">
-          <Input placeholder="请输入场景ID" allowClear />
-        </Form.Item>
-        <Form.Item name="name" label="场景名称">
-          <Input placeholder="请输入姓名" allowClear />
-        </Form.Item>
-        <Form.Item name="employeeId" label="联系人">
-          <Input placeholder="请输入员工编号" allowClear />
-        </Form.Item>
-        <Form.Item name="status" label="联系电话">
-        <Input placeholder="请输入联系电话" allowClear />
-        </Form.Item>
-        <Form.Item>
-          <Space>
-            <Button type="primary" onClick={handleSearch}>
-              查询
-            </Button>
-            <Button onClick={handleReset}>重置</Button>
-          </Space>
-        </Form.Item>
+      <Form form={form} layout="horizontal" style={{ marginBottom: 16 }}>
+        <Row gutter={16} align="middle">
+          <Col xs={24} sm={12} md={8} lg={6}>
+            <Form.Item name="sceneId" label="场景ID">
+              <Input placeholder="请输入场景ID" allowClear />
+            </Form.Item>
+          </Col>
+          <Col xs={24} sm={12} md={8} lg={6}>
+            <Form.Item name="sceneName" label="场景名称">
+              <Input placeholder="请输入场景名称" allowClear />
+            </Form.Item>
+          </Col>
+          <Col xs={24} sm={12} md={8} lg={6}>
+            <Form.Item name="sceneType" label="场景类型">
+              <Input placeholder="请输入场景类型" allowClear />
+            </Form.Item>
+          </Col>
+          <Col xs={24} sm={12} md={8} lg={6}>
+            <Form.Item name="contactPerson" label="联系人">
+              <Input placeholder="请输入联系人" allowClear />
+            </Form.Item>
+          </Col>
+          <Col xs={24} sm={12} md={8} lg={6}>
+            <Form.Item name="contactPhone" label="联系电话">
+              <Input placeholder="请输入联系电话" allowClear />
+            </Form.Item>
+          </Col>
+          <Col xs={24} sm={12} md={8} lg={6}>
+            <Form.Item>
+              <Space>
+                <Button type="primary" onClick={handleSearch}>
+                  查询
+                </Button>
+                <Button onClick={handleReset}>重置</Button>
+              </Space>
+            </Form.Item>
+          </Col>
+        </Row>
       </Form>
 
       {/* 表格 */}
-      <Table<User> columns={columns} dataSource={data} pagination={{ pageSize: 5 }} bordered />
+      <Table<Scene> columns={columns} dataSource={data} pagination={{ pageSize: 10 }} bordered />
     </div>
   );
 }

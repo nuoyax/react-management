@@ -30,6 +30,13 @@ export const MENU_ITEMS: MenuItem[] = [
   //   icon: <Visibility />,
   //   children: [{ key: 'visionMixin-1', text: '视觉融合', icon: <Visibility />, path: '/visionMixin/page1' }],
   // },
+
+  {
+    key: 'senseManagement',
+    text: '场景管理',
+    icon: <Tab />,
+    children: [{ key: 'senseManagement-1', text: '场景列表', icon: <Tab />, path: '/senseManagement/page1' }],
+  },
   {
     key: 'dataAnalysis',
     text: '数据分析',
@@ -50,12 +57,7 @@ export const MENU_ITEMS: MenuItem[] = [
   },
   // { key: 'pokemon', text: '宝可梦', icon: <CatchingPokemonIcon />, path: '/pokemon' },
   // { key: 'top-progress-bar', text: 'TopProgressBar', icon: <CatchingPokemonIcon />, path: '/top-progress-bar' },
-  {
-    key: 'senseManagement',
-    text: '场景管理',
-    icon: <Tab />,
-    children: [{ key: 'senseManagement-1', text: '场景列表', icon: <Tab />, path: '/senseManagement/page1' }],
-  },
+
   // {
   //   key: 'management',
   //   text: '管理',
