@@ -6,7 +6,7 @@ import DescriptionIcon from '@mui/icons-material/Description';
 import HomeIcon from '@mui/icons-material/Home';
 import ListIcon from '@mui/icons-material/List';
 
-import { Construction, Group, Settings, Token, Tab,Visibility } from '@mui/icons-material';
+import { Construction, Group, Settings, Token, Tab, Videocam, Topic } from '@mui/icons-material';
 import PeopleIcon from '@mui/icons-material/People';
 import TextFormatIcon from '@mui/icons-material/TextFormat';
 
@@ -35,19 +35,18 @@ export const MENU_ITEMS: MenuItem[] = [
     text: '数据分析',
     icon: <Token />,
     children: [{ key: 'dataAnalysis-1', text: '数据列表', icon: <Token />, path: '/dataAnalysis/page1' }],
-    
   },
   {
     key: 'realTime',
     text: '实时监控',
-    icon: <Tab />,
-    children: [{ key: 'realTime-1', text: '数字孪生', icon: <Tab />, path: '/realTime/page1' }],
+    icon: <Videocam />,
+    children: [{ key: 'realTime-1', text: '数字孪生', icon: <Videocam />, path: '/realTime/page1' }],
   },
   {
     key: 'trainSupport',
     text: '培训支持',
-    icon: <Tab />,
-    children: [{ key: 'trainSupport-1', text: '培训列表', icon: <Tab />, path: '/trainSupport/page1' }],
+    icon: <Topic />,
+    children: [{ key: 'trainSupport-1', text: '培训列表', icon: <Topic />, path: '/trainSupport/page1' }],
   },
   // { key: 'pokemon', text: '宝可梦', icon: <CatchingPokemonIcon />, path: '/pokemon' },
   // { key: 'top-progress-bar', text: 'TopProgressBar', icon: <CatchingPokemonIcon />, path: '/top-progress-bar' },

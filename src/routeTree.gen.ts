@@ -25,6 +25,7 @@ import { Route as AuthenticatedTrainSupportPage1IndexRouteImport } from './route
 import { Route as AuthenticatedSenseManagementPage1IndexRouteImport } from './routes/_authenticated/senseManagement/page1/index';
 import { Route as AuthenticatedRealTimePage1IndexRouteImport } from './routes/_authenticated/realTime/page1/index';
 import { Route as AuthenticatedDataAnalysisPage1IndexRouteImport } from './routes/_authenticated/dataAnalysis/page1/index';
+import { Route as AuthenticatedTrainSupportDetailTypeRouteImport } from './routes/_authenticated/trainSupport/detail/[$type]';
 
 const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
   id: '/_authenticated',
@@ -115,6 +116,12 @@ const AuthenticatedDataAnalysisPage1IndexRoute =
     path: '/dataAnalysis/page1/',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any);
+const AuthenticatedTrainSupportDetailTypeRoute =
+  AuthenticatedTrainSupportDetailTypeRouteImport.update({
+    id: '/trainSupport/detail/$type',
+    path: '/trainSupport/detail/$type',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any);
 
 export interface FileRoutesByFullPath {
   '/login': typeof authLoginRoute;
@@ -127,6 +134,7 @@ export interface FileRoutesByFullPath {
   '/threeBuild': typeof AuthenticatedThreeBuildIndexRoute;
   '/top-progress-bar': typeof AuthenticatedTopProgressBarIndexRoute;
   '/userAdmin': typeof AuthenticatedUserAdminIndexRoute;
+  '/trainSupport/detail/$type': typeof AuthenticatedTrainSupportDetailTypeRoute;
   '/dataAnalysis/page1': typeof AuthenticatedDataAnalysisPage1IndexRoute;
   '/realTime/page1': typeof AuthenticatedRealTimePage1IndexRoute;
   '/senseManagement/page1': typeof AuthenticatedSenseManagementPage1IndexRoute;
@@ -144,6 +152,7 @@ export interface FileRoutesByTo {
   '/threeBuild': typeof AuthenticatedThreeBuildIndexRoute;
   '/top-progress-bar': typeof AuthenticatedTopProgressBarIndexRoute;
   '/userAdmin': typeof AuthenticatedUserAdminIndexRoute;
+  '/trainSupport/detail/$type': typeof AuthenticatedTrainSupportDetailTypeRoute;
   '/dataAnalysis/page1': typeof AuthenticatedDataAnalysisPage1IndexRoute;
   '/realTime/page1': typeof AuthenticatedRealTimePage1IndexRoute;
   '/senseManagement/page1': typeof AuthenticatedSenseManagementPage1IndexRoute;
@@ -163,6 +172,7 @@ export interface FileRoutesById {
   '/_authenticated/threeBuild/': typeof AuthenticatedThreeBuildIndexRoute;
   '/_authenticated/top-progress-bar/': typeof AuthenticatedTopProgressBarIndexRoute;
   '/_authenticated/userAdmin/': typeof AuthenticatedUserAdminIndexRoute;
+  '/_authenticated/trainSupport/detail/$type': typeof AuthenticatedTrainSupportDetailTypeRoute;
   '/_authenticated/dataAnalysis/page1/': typeof AuthenticatedDataAnalysisPage1IndexRoute;
   '/_authenticated/realTime/page1/': typeof AuthenticatedRealTimePage1IndexRoute;
   '/_authenticated/senseManagement/page1/': typeof AuthenticatedSenseManagementPage1IndexRoute;
@@ -182,6 +192,7 @@ export interface FileRouteTypes {
     | '/threeBuild'
     | '/top-progress-bar'
     | '/userAdmin'
+    | '/trainSupport/detail/$type'
     | '/dataAnalysis/page1'
     | '/realTime/page1'
     | '/senseManagement/page1'
@@ -199,6 +210,7 @@ export interface FileRouteTypes {
     | '/threeBuild'
     | '/top-progress-bar'
     | '/userAdmin'
+    | '/trainSupport/detail/$type'
     | '/dataAnalysis/page1'
     | '/realTime/page1'
     | '/senseManagement/page1'
@@ -217,6 +229,7 @@ export interface FileRouteTypes {
     | '/_authenticated/threeBuild/'
     | '/_authenticated/top-progress-bar/'
     | '/_authenticated/userAdmin/'
+    | '/_authenticated/trainSupport/detail/$type'
     | '/_authenticated/dataAnalysis/page1/'
     | '/_authenticated/realTime/page1/'
     | '/_authenticated/senseManagement/page1/'
@@ -344,6 +357,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedDataAnalysisPage1IndexRouteImport;
       parentRoute: typeof AuthenticatedRouteRoute;
     };
+    '/_authenticated/trainSupport/detail/$type': {
+      id: '/_authenticated/trainSupport/detail/$type';
+      path: '/trainSupport/detail/$type';
+      fullPath: '/trainSupport/detail/$type';
+      preLoaderRoute: typeof AuthenticatedTrainSupportDetailTypeRouteImport;
+      parentRoute: typeof AuthenticatedRouteRoute;
+    };
   }
 }
 
@@ -356,6 +376,7 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedThreeBuildIndexRoute: typeof AuthenticatedThreeBuildIndexRoute;
   AuthenticatedTopProgressBarIndexRoute: typeof AuthenticatedTopProgressBarIndexRoute;
   AuthenticatedUserAdminIndexRoute: typeof AuthenticatedUserAdminIndexRoute;
+  AuthenticatedTrainSupportDetailTypeRoute: typeof AuthenticatedTrainSupportDetailTypeRoute;
   AuthenticatedDataAnalysisPage1IndexRoute: typeof AuthenticatedDataAnalysisPage1IndexRoute;
   AuthenticatedRealTimePage1IndexRoute: typeof AuthenticatedRealTimePage1IndexRoute;
   AuthenticatedSenseManagementPage1IndexRoute: typeof AuthenticatedSenseManagementPage1IndexRoute;
@@ -372,6 +393,8 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedThreeBuildIndexRoute: AuthenticatedThreeBuildIndexRoute,
   AuthenticatedTopProgressBarIndexRoute: AuthenticatedTopProgressBarIndexRoute,
   AuthenticatedUserAdminIndexRoute: AuthenticatedUserAdminIndexRoute,
+  AuthenticatedTrainSupportDetailTypeRoute:
+    AuthenticatedTrainSupportDetailTypeRoute,
   AuthenticatedDataAnalysisPage1IndexRoute:
     AuthenticatedDataAnalysisPage1IndexRoute,
   AuthenticatedRealTimePage1IndexRoute: AuthenticatedRealTimePage1IndexRoute,
