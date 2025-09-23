@@ -20,11 +20,14 @@ interface DetailSearch {
 function DetailPage() {
   const { type } = useParams({ from: '/_authenticated/trainSupport/detail/$type' });
   const { link } = useSearch({ from: '/_authenticated/trainSupport/detail/$type' }) as any;
-  const decodedLink = link ? decodeURIComponent(link) : '';
+  // const decodedLink = link ? decodeURIComponent(link) : '';
   return (
     <div style={{ padding: 24 }}>
       {type === 'video' ? (
-        <iframe width="100%" height="800px" src={decodedLink} />
+        <video width="100%" height="800" controls>
+          <source src={`/react-management/${link}.mp4`} type="video/mp4" />
+          您的浏览器不支持 video 标签。
+        </video>
       ) : (
         <Typography.Paragraph style={{ whiteSpace: 'pre-wrap', fontSize: 16 }}>
           消防安全基础知识培训 <br />

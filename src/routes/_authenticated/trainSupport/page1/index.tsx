@@ -34,7 +34,7 @@ const initialData: Training[] = [
     trainingId: 'TR2025092301',
     drillId: 'DR2025092001',
     name: '消防安全知识培训',
-    link: 'https://www.bilibili.com/video/BV1EsWwz7Ebu?t=3.0',
+    link: '32526962285-1-192',
     type: '安全培训',
     trainer: '张伟',
     location: '北京总部会议室A',
@@ -46,7 +46,7 @@ const initialData: Training[] = [
   {
     key: 2,
     trainingId: 'TR2025092302',
-    link: 'https://www.bilibili.com/video/BV1EsWwz7Ebu?t=3.0',
+    link: '1323250918-1-192',
     drillId: 'DR2025092102',
     name: '地震应急演练复盘培训',
     type: '应急演练复盘',
