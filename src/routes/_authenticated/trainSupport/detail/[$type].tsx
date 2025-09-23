@@ -14,7 +14,7 @@ export const Route = createFileRoute('/_authenticated/trainSupport/detail/$type'
 
 function DetailPage() {
   const { type } = useParams({ from: '/_authenticated/trainSupport/detail/$type' });
-  const { trainingId } = useSearch({ from: '/_authenticated/trainSupport/detail/$type' });
+  // const { trainingId } = useSearch({ from: '/_authenticated/trainSupport/detail/$type' });
 
   return (
     <div style={{ padding: 24 }}>
@@ -22,7 +22,7 @@ function DetailPage() {
         <video width="100%" height="400" controls src="https://www.w3schools.com/html/mov_bbb.mp4" />
       ) : (
         <Typography.Paragraph style={{ whiteSpace: 'pre-wrap', fontSize: 16 }}>
-          这里展示培训文档内容，培训ID：{trainingId}
+          这里展示培训文档内容，培训ID
         </Typography.Paragraph>
       )}
     </div>

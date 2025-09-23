@@ -176,8 +176,10 @@ function RouteComponent() {
           type="link"
           style={{ textDecoration: 'underline' }}
           onClick={() =>
+            // @ts-ignore
             navigate({
-              to: '/trainSupport/detail/video',
+              to: '/trainSupport/detail/$type',
+              params: { type: 'video' },
               search: { video: record.trainingId }, // 传视频参数
             })
           }
@@ -202,8 +204,10 @@ function RouteComponent() {
             size="small"
             type="link"
             onClick={() =>
+              // @ts-ignore
               navigate({
-                to: '/trainSupport/detail/text',
+                to: '/trainSupport/detail/$type',
+                params: { type: 'text' },
                 search: { doc: record.trainingId }, // 传文档参数
               })
             }
