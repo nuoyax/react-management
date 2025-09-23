@@ -15,6 +15,7 @@ export const Route = createFileRoute('/_authenticated/trainSupport/page1/')({
 
 interface Training {
   key: number;
+  link?: string;
   trainingId: string; // 培训编号
   drillId: string; // 关联演练编号
   name: string; // 培训名称
@@ -33,6 +34,7 @@ const initialData: Training[] = [
     trainingId: 'TR2025092301',
     drillId: 'DR2025092001',
     name: '消防安全知识培训',
+    link: 'https://www.bilibili.com/video/BV1EsWwz7Ebu?t=3.0',
     type: '安全培训',
     trainer: '张伟',
     location: '北京总部会议室A',
@@ -44,6 +46,7 @@ const initialData: Training[] = [
   {
     key: 2,
     trainingId: 'TR2025092302',
+    link: 'https://www.bilibili.com/video/BV1EsWwz7Ebu?t=3.0',
     drillId: 'DR2025092102',
     name: '地震应急演练复盘培训',
     type: '应急演练复盘',
@@ -57,6 +60,7 @@ const initialData: Training[] = [
   {
     key: 3,
     trainingId: 'TR2025092303',
+    link: 'https://www.bilibili.com/video/BV1EsWwz7Ebu?t=3.0',
     drillId: 'DR2025092103',
     name: '急救基础知识培训',
     type: '医疗急救',
@@ -70,6 +74,7 @@ const initialData: Training[] = [
   {
     key: 4,
     trainingId: 'TR2025092304',
+    link: 'https://www.bilibili.com/video/BV1EsWwz7Ebu?t=3.0',
     drillId: 'DR2025092104',
     name: '火灾疏散流程讲解',
     type: '消防培训',
@@ -83,6 +88,7 @@ const initialData: Training[] = [
   {
     key: 5,
     trainingId: 'TR2025092305',
+    link: 'https://www.bilibili.com/video/BV1EsWwz7Ebu?t=3.0',
     drillId: 'DR2025092105',
     name: '化学品泄漏应急处理',
     type: '安全培训',
@@ -96,6 +102,7 @@ const initialData: Training[] = [
   {
     key: 6,
     trainingId: 'TR2025092306',
+    link: 'https://www.bilibili.com/video/BV1EsWwz7Ebu?t=3.0',
     drillId: 'DR2025092106',
     name: '台风防范及应急演练',
     type: '自然灾害应对',
@@ -180,7 +187,7 @@ function RouteComponent() {
             navigate({
               to: '/trainSupport/detail/$type',
               params: { type: 'video' },
-              search: { video: record.trainingId }, // 传视频参数
+              search: { link: record.link }, // 传视频参数
             })
           }
         >
