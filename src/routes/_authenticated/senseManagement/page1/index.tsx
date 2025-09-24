@@ -27,6 +27,15 @@ interface Scene {
 const initialData: Scene[] = [
   {
     key: 1,
+    sceneId: 'S000',
+    sceneName: '码头港口',
+    sceneType: '港口',
+    address: '海南省某港口',
+    contactPerson: '张三',
+    contactPhone: '13800000001',
+  },
+  {
+    key: 1,
     sceneId: 'S001',
     sceneName: '学校操场演练',
     sceneType: '学校',
@@ -123,7 +132,7 @@ function RouteComponent() {
               // @ts-ignore
               navigate({
                 to: '/senseManagement/detail/$type',
-                params: { type: (index + 1).toString() },
+                params: { type: (index ).toString() },
               })
             }
           >
