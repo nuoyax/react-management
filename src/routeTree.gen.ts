@@ -24,6 +24,7 @@ import { Route as AuthenticatedVisionMixinPage1IndexRouteImport } from './routes
 import { Route as AuthenticatedTrainSupportPage1IndexRouteImport } from './routes/_authenticated/trainSupport/page1/index';
 import { Route as AuthenticatedSenseManagementPage1IndexRouteImport } from './routes/_authenticated/senseManagement/page1/index';
 import { Route as AuthenticatedRealTimePage1IndexRouteImport } from './routes/_authenticated/realTime/page1/index';
+import { Route as AuthenticatedDataAnalysisPage2IndexRouteImport } from './routes/_authenticated/dataAnalysis/page2/index';
 import { Route as AuthenticatedDataAnalysisPage1IndexRouteImport } from './routes/_authenticated/dataAnalysis/page1/index';
 import { Route as AuthenticatedTrainSupportDetailTypeRouteImport } from './routes/_authenticated/trainSupport/detail/[$type]';
 import { Route as AuthenticatedSenseManagementDetailTypeRouteImport } from './routes/_authenticated/senseManagement/detail/[$type]';
@@ -111,6 +112,12 @@ const AuthenticatedRealTimePage1IndexRoute =
     path: '/realTime/page1/',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any);
+const AuthenticatedDataAnalysisPage2IndexRoute =
+  AuthenticatedDataAnalysisPage2IndexRouteImport.update({
+    id: '/dataAnalysis/page2/',
+    path: '/dataAnalysis/page2/',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any);
 const AuthenticatedDataAnalysisPage1IndexRoute =
   AuthenticatedDataAnalysisPage1IndexRouteImport.update({
     id: '/dataAnalysis/page1/',
@@ -144,6 +151,7 @@ export interface FileRoutesByFullPath {
   '/senseManagement/detail/$type': typeof AuthenticatedSenseManagementDetailTypeRoute;
   '/trainSupport/detail/$type': typeof AuthenticatedTrainSupportDetailTypeRoute;
   '/dataAnalysis/page1': typeof AuthenticatedDataAnalysisPage1IndexRoute;
+  '/dataAnalysis/page2': typeof AuthenticatedDataAnalysisPage2IndexRoute;
   '/realTime/page1': typeof AuthenticatedRealTimePage1IndexRoute;
   '/senseManagement/page1': typeof AuthenticatedSenseManagementPage1IndexRoute;
   '/trainSupport/page1': typeof AuthenticatedTrainSupportPage1IndexRoute;
@@ -163,6 +171,7 @@ export interface FileRoutesByTo {
   '/senseManagement/detail/$type': typeof AuthenticatedSenseManagementDetailTypeRoute;
   '/trainSupport/detail/$type': typeof AuthenticatedTrainSupportDetailTypeRoute;
   '/dataAnalysis/page1': typeof AuthenticatedDataAnalysisPage1IndexRoute;
+  '/dataAnalysis/page2': typeof AuthenticatedDataAnalysisPage2IndexRoute;
   '/realTime/page1': typeof AuthenticatedRealTimePage1IndexRoute;
   '/senseManagement/page1': typeof AuthenticatedSenseManagementPage1IndexRoute;
   '/trainSupport/page1': typeof AuthenticatedTrainSupportPage1IndexRoute;
@@ -184,6 +193,7 @@ export interface FileRoutesById {
   '/_authenticated/senseManagement/detail/$type': typeof AuthenticatedSenseManagementDetailTypeRoute;
   '/_authenticated/trainSupport/detail/$type': typeof AuthenticatedTrainSupportDetailTypeRoute;
   '/_authenticated/dataAnalysis/page1/': typeof AuthenticatedDataAnalysisPage1IndexRoute;
+  '/_authenticated/dataAnalysis/page2/': typeof AuthenticatedDataAnalysisPage2IndexRoute;
   '/_authenticated/realTime/page1/': typeof AuthenticatedRealTimePage1IndexRoute;
   '/_authenticated/senseManagement/page1/': typeof AuthenticatedSenseManagementPage1IndexRoute;
   '/_authenticated/trainSupport/page1/': typeof AuthenticatedTrainSupportPage1IndexRoute;
@@ -205,6 +215,7 @@ export interface FileRouteTypes {
     | '/senseManagement/detail/$type'
     | '/trainSupport/detail/$type'
     | '/dataAnalysis/page1'
+    | '/dataAnalysis/page2'
     | '/realTime/page1'
     | '/senseManagement/page1'
     | '/trainSupport/page1'
@@ -224,6 +235,7 @@ export interface FileRouteTypes {
     | '/senseManagement/detail/$type'
     | '/trainSupport/detail/$type'
     | '/dataAnalysis/page1'
+    | '/dataAnalysis/page2'
     | '/realTime/page1'
     | '/senseManagement/page1'
     | '/trainSupport/page1'
@@ -244,6 +256,7 @@ export interface FileRouteTypes {
     | '/_authenticated/senseManagement/detail/$type'
     | '/_authenticated/trainSupport/detail/$type'
     | '/_authenticated/dataAnalysis/page1/'
+    | '/_authenticated/dataAnalysis/page2/'
     | '/_authenticated/realTime/page1/'
     | '/_authenticated/senseManagement/page1/'
     | '/_authenticated/trainSupport/page1/'
@@ -363,6 +376,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedRealTimePage1IndexRouteImport;
       parentRoute: typeof AuthenticatedRouteRoute;
     };
+    '/_authenticated/dataAnalysis/page2/': {
+      id: '/_authenticated/dataAnalysis/page2/';
+      path: '/dataAnalysis/page2';
+      fullPath: '/dataAnalysis/page2';
+      preLoaderRoute: typeof AuthenticatedDataAnalysisPage2IndexRouteImport;
+      parentRoute: typeof AuthenticatedRouteRoute;
+    };
     '/_authenticated/dataAnalysis/page1/': {
       id: '/_authenticated/dataAnalysis/page1/';
       path: '/dataAnalysis/page1';
@@ -399,6 +419,7 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedSenseManagementDetailTypeRoute: typeof AuthenticatedSenseManagementDetailTypeRoute;
   AuthenticatedTrainSupportDetailTypeRoute: typeof AuthenticatedTrainSupportDetailTypeRoute;
   AuthenticatedDataAnalysisPage1IndexRoute: typeof AuthenticatedDataAnalysisPage1IndexRoute;
+  AuthenticatedDataAnalysisPage2IndexRoute: typeof AuthenticatedDataAnalysisPage2IndexRoute;
   AuthenticatedRealTimePage1IndexRoute: typeof AuthenticatedRealTimePage1IndexRoute;
   AuthenticatedSenseManagementPage1IndexRoute: typeof AuthenticatedSenseManagementPage1IndexRoute;
   AuthenticatedTrainSupportPage1IndexRoute: typeof AuthenticatedTrainSupportPage1IndexRoute;
@@ -420,6 +441,8 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
     AuthenticatedTrainSupportDetailTypeRoute,
   AuthenticatedDataAnalysisPage1IndexRoute:
     AuthenticatedDataAnalysisPage1IndexRoute,
+  AuthenticatedDataAnalysisPage2IndexRoute:
+    AuthenticatedDataAnalysisPage2IndexRoute,
   AuthenticatedRealTimePage1IndexRoute: AuthenticatedRealTimePage1IndexRoute,
   AuthenticatedSenseManagementPage1IndexRoute:
     AuthenticatedSenseManagementPage1IndexRoute,

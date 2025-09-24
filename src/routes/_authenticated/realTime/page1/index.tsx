@@ -5,5 +5,5 @@ export const Route = createFileRoute('/_authenticated/realTime/page1/')({
 });
 
 function RouteComponent() {
-  return <div>Hello "/_authenticated/realTime/page1/"!</div>;
+  return <iframe width="100%" height="100%" src="http://localhost:8080/assets/addons/cesiummapv/vue3/#/" />;
 }

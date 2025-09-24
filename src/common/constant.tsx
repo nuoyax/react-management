@@ -41,7 +41,10 @@ export const MENU_ITEMS: MenuItem[] = [
     key: 'dataAnalysis',
     text: '数据分析',
     icon: <Token />,
-    children: [{ key: 'dataAnalysis-1', text: '数据列表', icon: <Token />, path: '/dataAnalysis/page1' }],
+    children: [
+      { key: 'dataAnalysis-1', text: '数据列表', icon: <Token />, path: '/dataAnalysis/page1' },
+      { key: 'dataAnalysis-2', text: '数据分析', icon: <Token />, path: '/dataAnalysis/page2' },
+    ],
   },
   {
     key: 'realTime',

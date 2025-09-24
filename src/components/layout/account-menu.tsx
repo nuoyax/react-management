@@ -20,7 +20,7 @@ export function AccountMenu() {
   return (
     <Box className="flex items-center">
       <IconButton onClick={handleClick} size="small" sx={{ ml: 1 }}>
-        <Avatar src="https://multiavatar.com/img/logo-animated.gif?v=003" sx={{ width: 32, height: 32 }} />
+        <Avatar src="/react-management/logo.png" sx={{ width: 32, height: 32 }} />
       </IconButton>
       <Typography variant="body2" sx={{ ml: 1, textTransform: 'capitalize' }}>
         {user?.username}
