@@ -1,343 +1,167 @@
 import { Grid } from '@mui/material';
 import { EChartsOption } from 'echarts/types/dist/shared';
 import { BaseChart } from './components/base-chart';
-import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import { Margin } from '@mui/icons-material';
-// 销售数据
-const salesData = [
-  { product: '笔记本电脑', '2021': 4300, '2022': 5000, '2023': 6800 },
-  { product: '智能手机', '2021': 8500, '2022': 9200, '2023': 10500 },
-  { product: '平板电脑', '2021': 2800, '2022': 3800, '2023': 4300 },
-  { product: '智能手表', '2021': 1500, '2022': 2500, '2023': 3500 },
-  { product: '耳机', '2021': 3200, '2022': 4500, '2023': 5800 },
+
+// 卡片数据
+const cardData = [
+  { label: '累计演练次数', value: 268 },
+  { label: '累计参与人数', value: 18650 },
+  { label: '消防演练次数', value: 72 },
+  { label: '防汛演练次数', value: 55 },
+  { label: '地震演练次数', value: 40 },
+  { label: '危险化学品演练次数', value: 30 },
 ];
 
-// 用户增长数据
-const userGrowthData = [
-  { month: '1月', APP: 1200, 网站: 800, 小程序: 600 },
-  { month: '2月', APP: 1900, 网站: 1200, 小程序: 900 },
-  { month: '3月', APP: 2500, 网站: 1500, 小程序: 1200 },
-  { month: '4月', APP: 3000, 网站: 1800, 小程序: 1500 },
-  { month: '5月', APP: 3500, 网站: 2100, 小程序: 1800 },
-  { month: '6月', APP: 4000, 网站: 2400, 小程序: 2100 },
+// 演练类型年度趋势
+const drillTypeYearly = [
+  { type: '消防演练', '2021': 35, '2022': 50, '2023': 72 },
+  { type: '防汛演练', '2021': 22, '2022': 28, '2023': 55 },
+  { type: '地震演练', '2021': 15, '2022': 18, '2023': 40 },
+  { type: '交通事故演练', '2021': 18, '2022': 25, '2023': 36 },
+  { type: '危险化学品演练', '2021': 10, '2022': 15, '2023': 30 },
 ];
 
-// 区域分布数据
+// 参与人员结构（2023月度）
+const participantData = [
+  { month: '1月', 政府机关: 400, 学校: 300, 企事业单位: 200, 居民: 350 },
+  { month: '2月', 政府机关: 600, 学校: 500, 企事业单位: 300, 居民: 450 },
+  { month: '3月', 政府机关: 750, 学校: 600, 企事业单位: 400, 居民: 600 },
+  { month: '4月', 政府机关: 900, 学校: 700, 企事业单位: 500, 居民: 650 },
+  { month: '5月', 政府机关: 1100, 学校: 900, 企事业单位: 600, 居民: 800 },
+  { month: '6月', 政府机关: 1300, 学校: 1000, 企事业单位: 700, 居民: 900 },
+];
+
+// 区域分布
 const regionData = [
-  { name: '华东', value: 35 },
-  { name: '华南', value: 25 },
-  { name: '华北', value: 20 },
-  { name: '西南', value: 10 },
-  { name: '西北', value: 5 },
-  { name: '东北', value: 5 },
+  { name: '市中心', value: 35 },
+  { name: '高新区', value: 25 },
+  { name: '工业园区', value: 20 },
+  { name: '郊区', value: 12 },
+  { name: '乡镇', value: 8 },
 ];
 
-// 柱状图配置
+// 近一周演练数据
+const weeklyData = [
+  { day: 'Mon', 消防: 2, 防汛: 1, 地震: 0, 交通事故: 1 },
+  { day: 'Tue', 消防: 3, 防汛: 1, 地震: 1, 交通事故: 0 },
+  { day: 'Wed', 消防: 2, 防汛: 2, 地震: 1, 交通事故: 1 },
+  { day: 'Thu', 消防: 4, 防汛: 1, 地震: 0, 交通事故: 2 },
+  { day: 'Fri', 消防: 1, 防汛: 2, 地震: 1, 交通事故: 1 },
+  { day: 'Sat', 消防: 3, 防汛: 1, 地震: 1, 交通事故: 2 },
+  { day: 'Sun', 消防: 2, 防汛: 2, 地震: 0, 交通事故: 1 },
+];
+
+// 📊 图表配置
+
+// 柱状图：演练类型年度趋势
 const barChartOption: EChartsOption = {
-  title: {
-    text: '产品销售趋势 (2021-2023)',
-    left: 'center',
-  },
-  tooltip: {
-    trigger: 'axis',
-    axisPointer: {
-      type: 'shadow',
-    },
-  },
-  legend: {
-    top: 'bottom',
-  },
-  dataset: {
-    source: salesData,
-  },
-  xAxis: {
-    type: 'category',
-    axisLabel: {
-      rotate: 45,
-      interval: 0,
-    },
-  },
-  yAxis: {
-    type: 'value',
-    name: '销售量',
-  },
+  title: { text: '演练类型年度趋势 (2021-2023)', left: 'center' },
+  tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' } },
+  legend: { top: 'bottom' },
+  dataset: { source: drillTypeYearly },
+  xAxis: { type: 'category' },
+  yAxis: { type: 'value', name: '演练次数' },
   series: [
-    {
-      type: 'bar',
-      name: '2021',
-      encode: {
-        x: 'product',
-        y: '2021',
-      },
-      itemStyle: {
-        color: '#409EFF',
-      },
-    },
-    {
-      type: 'bar',
-      name: '2022',
-      encode: {
-        x: 'product',
-        y: '2022',
-      },
-      itemStyle: {
-        color: '#67C23A',
-      },
-    },
-    {
-      type: 'bar',
-      name: '2023',
-      encode: {
-        x: 'product',
-        y: '2023',
-      },
-      itemStyle: {
-        color: '#E6A23C',
-      },
-    },
+    { type: 'bar', name: '2021', encode: { x: 'type', y: '2021' }, itemStyle: { color: '#409EFF' } },
+    { type: 'bar', name: '2022', encode: { x: 'type', y: '2022' }, itemStyle: { color: '#67C23A' } },
+    { type: 'bar', name: '2023', encode: { x: 'type', y: '2023' }, itemStyle: { color: '#E6A23C' } },
   ],
 };
 
-// 折线图配置
+// 折线图：参与人员增长
 const lineChartOption: EChartsOption = {
-  title: {
-    text: '用户增长趋势 (2023)',
-    left: 'center',
-  },
-  tooltip: {
-    trigger: 'axis',
-  },
-  legend: {
-    top: 'bottom',
-  },
-  dataset: {
-    source: userGrowthData,
-  },
-  xAxis: {
-    type: 'category',
-    boundaryGap: false,
-  },
-  yAxis: {
-    type: 'value',
-    name: '用户数',
-  },
+  title: { text: '2023年各月参与人员结构', left: 'center' },
+  tooltip: { trigger: 'axis' },
+  legend: { top: 'bottom' },
+  dataset: { source: participantData },
+  xAxis: { type: 'category' },
+  yAxis: { type: 'value', name: '人数' },
   series: [
-    {
-      type: 'line',
-      name: 'APP',
-      encode: {
-        x: 'month',
-        y: 'APP',
-      },
-      smooth: true,
-      lineStyle: {
-        width: 3,
-      },
-      itemStyle: {
-        color: '#409EFF',
-      },
-      areaStyle: {
-        color: {
-          type: 'linear',
-          x: 0,
-          y: 0,
-          x2: 0,
-          y2: 1,
-          colorStops: [
-            {
-              offset: 0,
-              color: 'rgba(64, 158, 255, 0.5)',
-            },
-            {
-              offset: 1,
-              color: 'rgba(64, 158, 255, 0.1)',
-            },
-          ],
-        },
-      },
-    },
-    {
-      type: 'line',
-      name: '网站',
-      encode: {
-        x: 'month',
-        y: '网站',
-      },
-      smooth: true,
-      lineStyle: {
-        width: 3,
-      },
-      itemStyle: {
-        color: '#67C23A',
-      },
-      areaStyle: {
-        color: {
-          type: 'linear',
-          x: 0,
-          y: 0,
-          x2: 0,
-          y2: 1,
-          colorStops: [
-            {
-              offset: 0,
-              color: 'rgba(103, 194, 58, 0.5)',
-            },
-            {
-              offset: 1,
-              color: 'rgba(103, 194, 58, 0.1)',
-            },
-          ],
-        },
-      },
-    },
-    {
-      type: 'line',
-      name: '小程序',
-      encode: {
-        x: 'month',
-        y: '小程序',
-      },
-      smooth: true,
-      lineStyle: {
-        width: 3,
-      },
-      itemStyle: {
-        color: '#E6A23C',
-      },
-      areaStyle: {
-        color: {
-          type: 'linear',
-          x: 0,
-          y: 0,
-          x2: 0,
-          y2: 1,
-          colorStops: [
-            {
-              offset: 0,
-              color: 'rgba(230, 162, 60, 0.5)',
-            },
-            {
-              offset: 1,
-              color: 'rgba(230, 162, 60, 0.1)',
-            },
-          ],
-        },
-      },
-    },
+    { type: 'line', name: '政府机关', encode: { x: 'month', y: '政府机关' }, smooth: true },
+    { type: 'line', name: '学校', encode: { x: 'month', y: '学校' }, smooth: true },
+    { type: 'line', name: '企事业单位', encode: { x: 'month', y: '企事业单位' }, smooth: true },
+    { type: 'line', name: '居民', encode: { x: 'month', y: '居民' }, smooth: true },
   ],
 };
 
-// 饼图配置
+// 饼图：区域分布
 const pieChartOption: EChartsOption = {
-  title: {
-    text: '用户区域分布',
-    left: 'center',
-  },
-  tooltip: {
-    trigger: 'item',
-    formatter: '{a} <br/>{b}: {c} ({d}%)',
-  },
-  legend: {
-    top: 'bottom',
-  },
-  dataset: {
-    source: regionData,
-  },
+  title: { text: '2023年演练区域分布', left: 'center' },
+  tooltip: { trigger: 'item', formatter: '{b}: {c} ({d}%)' },
+  legend: { top: 'bottom' },
+  dataset: { source: regionData },
+  color: ['#5470C6', '#91CC75', '#EE6666', '#FAC858', '#73C0DE', '#3BA272', '#FC8452', '#9A60B4', '#EA7CCC'], // 🎨 多种颜色
   series: [
     {
       name: '区域分布',
       type: 'pie',
       radius: ['40%', '70%'],
-      avoidLabelOverlap: false,
-      itemStyle: {
-        borderRadius: 10,
-        borderColor: '#fff',
-        borderWidth: 2,
-      },
-      label: {
-        show: false,
-        position: 'center',
-      },
-      emphasis: {
-        label: {
-          show: true,
-          fontSize: '18',
-          fontWeight: 'bold',
-        },
-      },
-      labelLine: {
-        show: false,
-      },
-      encode: {
-        itemName: 'name',
-        value: 'value',
-      },
+      itemStyle: { borderRadius: 10, borderColor: '#fff', borderWidth: 2 },
+      encode: { itemName: 'name', value: 'value' },
     },
   ],
 };
 
-const barOption: EChartsOption = {
-  xAxis: {
-    type: 'category',
-    data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-  },
-  yAxis: {
-    type: 'value',
-  },
+// 堆叠柱状图：近一周演练次数
+const weeklyChartOption: EChartsOption = {
+  title: { text: '近一周演练类型统计', left: 'center' },
+  tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' } },
+  legend: { top: 'bottom' },
+  dataset: { source: weeklyData },
+  xAxis: { type: 'category' },
+  yAxis: { type: 'value', name: '次数' },
   series: [
+    { type: 'bar', name: '消防', stack: 'total', encode: { x: 'day', y: '消防' }, itemStyle: { color: '#ff4d4f' } },
+    { type: 'bar', name: '防汛', stack: 'total', encode: { x: 'day', y: '防汛' }, itemStyle: { color: '#36cfc9' } },
+    { type: 'bar', name: '地震', stack: 'total', encode: { x: 'day', y: '地震' }, itemStyle: { color: '#faad14' } },
     {
-      data: [120, 200, 150, 80, 70, 110, 130],
       type: 'bar',
+      name: '交通事故',
+      stack: 'total',
+      encode: { x: 'day', y: '交通事故' },
+      itemStyle: { color: '#9254de' },
     },
   ],
 };
 
+// 🚀 主组件
 export function DemoECharts() {
   return (
-    <div>
-      <div style={{margin:'50px'}}>
-  
-        <Grid container spacing={10}>
-          {Array.from({ length: 6 }).map((e, i) => (
-            <Grid size={{ xs: 12, md: 2 }}>
-              <Card  variant="outlined" sx={{ minWidth: 275 }}>
-                <CardContent>
-                  <Typography gutterBottom sx={{ color: 'text.secondary', fontSize: 14 }}>
-                    港口流量{i}
-                  </Typography>
-                  <Typography variant="h5" component="div">
-                    99999+
-                  </Typography>
-                </CardContent>
-              </Card>
-            </Grid>
-          ))}
+    <div style={{ margin: '50px' }}>
+      <Grid container spacing={10}>
+        {cardData.map((c, i) => (
+          <Grid size={{ xs: 12, md: 2 }} key={i}>
+            <Card variant="outlined" sx={{ minWidth: 200, textAlign: 'center' }}>
+              <CardContent>
+                <Typography gutterBottom sx={{ color: 'text.secondary', fontSize: 14 }}>
+                  {c.label}
+                </Typography>
+                <Typography variant="h5" component="div">
+                  {c.value}
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+        ))}
+      </Grid>
+
+      <Grid container spacing={4} style={{ marginTop: '50px' }}>
+        <Grid size={{ xs: 12, md: 6 }}>
+          <BaseChart option={barChartOption} style={{ height: '400px', width: '100%' }} />
         </Grid>
-      </div>
-      <div>
-        <Grid container spacing={2}>
-          <Grid size={{ xs: 12, md: 6 }}  style={{margin:'50px 0'}}>
-            <BaseChart option={barChartOption} style={{ height: '400px', width: '100%' }} />
-          </Grid>
-
-          <Grid size={{ xs: 12, md: 6 }}  style={{margin:'50px 0'}}>
-            <BaseChart option={lineChartOption} style={{ height: '400px', width: '100%' }} />
-          </Grid>
-
-          <Grid size={{ xs: 12, md: 6 }}  style={{margin:'200px 0'}}>
-            <BaseChart option={pieChartOption} style={{ height: '400px', width: '100%' }} />
-          </Grid>
-
-          <Grid size={{ xs: 12, md: 6 }}  style={{margin:'200px 0'}}>
-            <BaseChart option={barOption} style={{ height: '400px', width: '100%' }} />
-          </Grid>
+        <Grid size={{ xs: 12, md: 6 }}>
+          <BaseChart option={lineChartOption} style={{ height: '400px', width: '100%' }} />
         </Grid>
-      </div>
+        <Grid size={{ xs: 12, md: 6 }}>
+          <BaseChart option={pieChartOption} style={{ height: '400px', width: '100%' }} />
+        </Grid>
+        <Grid size={{ xs: 12, md: 6 }}>
+          <BaseChart option={weeklyChartOption} style={{ height: '400px', width: '100%' }} />
+        </Grid>
+      </Grid>
     </div>
   );
 }
